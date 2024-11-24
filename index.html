@@ -3,36 +3,391 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Product Cart</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Red+Hat+Text:ital,wght@0,300..700;1,300..700&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="css/styles.css" />
   </head>
   <body>
     <header class="header">
       <h1 class="h1">Desserts</h1>
-      <div class="filter-tab">
-        <div class="tag">Default</div>
-        <div class="tag">Name</div>
-        <div class="tag">Price</div>
+      <div id="filter-tab" class="filter-tab">
+        <div class="chip">Default</div>
+        <div class="chip">Name</div>
+        <div class="chip">Price</div>
       </div>
     </header>
     <main class="main">
       <div class="products-container">
         <div class="product">
-          <div class="img-button">
+          <div class="img-button-box">
             <picture>
+              <source
+                media="(min-width:1024px)"
+                srcset="assets/images/image-waffle-desktop.jpg"
+              />
+              <source
+                media="(min-width:768px)"
+                srcset="assets/images/image-waffle-tablet.jpg"
+              />
+              <source
+                media="(min-width:360px)"
+                srcset="assets/images/image-waffle-mobile.jpg"
+              />
               <img
-                class="product-image"
+                class="product-image waffle"
                 src="assets/images/image-waffle-mobile.jpg"
-                alt=""
+                alt="A waffle tower with sliced strawberries and icing sugar"
               />
             </picture>
             <button class="add-button">
-              <img src="assets/images/icon-add-to-cart.svg" alt="" />Add to Cart
+              <img
+                class="icon-add-cart"
+                src="assets/images/icon-add-to-cart.svg"
+                alt=""
+              />Add to Cart
             </button>
+            <div class="product-info">
+              <h6 class="tag-text">Waffle</h6>
+              <h2 class="title">Waffle with Berries</h2>
+              <h2 class="title title-price">$6.50</h2>
+            </div>
+          </div>
+        </div>
+
+        <div class="product">
+          <div class="img-button-box">
+            <picture>
+              <source
+                media="(min-width:1024px)"
+                srcset="assets/images/image-creme-brulee-desktop.jpg"
+              />
+              <source
+                media="(min-width:768px)"
+                srcset="assets/images/image-creme-brulee-tablet.jpg"
+              />
+              <source
+                media="(min-width:360px)"
+                srcset="assets/images/image-creme-brulee-mobile.jpg"
+              />
+              <img
+                class="product-image cremebrule"
+                src="assets/images/image-creme-brulee-mobile.jpg"
+                alt="Two dishes of crréme brûlée topped with berries, figs and mint"
+              />
+            </picture>
+            <button class="add-button">
+              <img
+                class="icon-add-cart"
+                src="assets/images/icon-add-to-cart.svg"
+                alt=""
+              />Add to Cart
+            </button>
+            <div class="product-info">
+              <h6 class="tag-text">Crème Brûlée</h6>
+              <h2 class="title">Vanilla Bean Crème Brûlée</h2>
+              <h2 class="title title-price">$7.00</h2>
+            </div>
+          </div>
+        </div>
+
+        <div class="product">
+          <div class="img-button-box">
+            <picture>
+              <source
+                media="(min-width:1024px)"
+                srcset="assets/images/image-macaron-desktop.jpg"
+              />
+              <source
+                media="(min-width:768px)"
+                srcset="assets/images/image-macaron-tablet.jpg"
+              />
+              <source
+                media="(min-width:360px)"
+                srcset="assets/images/image-macaron-mobile.jpg"
+              />
+              <img
+                class="product-image macaron"
+                src="assets/images/image-macaron-mobile.jpg"
+                alt="Five diferent flavour macarons."
+              />
+            </picture>
+            <button class="add-button">
+              <img
+                class="icon-add-cart"
+                src="assets/images/icon-add-to-cart.svg"
+                alt=""
+              />Add to Cart
+            </button>
+            <div class="product-info">
+              <h6 class="tag-text">Macaron</h6>
+              <h2 class="title">Macaron Mix of Five</h2>
+              <h2 class="title title-price">$8.00</h2>
+            </div>
+          </div>
+        </div>
+
+        <div class="product">
+          <div class="img-button-box">
+            <picture>
+              <source
+                media="(min-width:1024px)"
+                srcset="assets/images/image-tiramisu-desktop.jpg"
+              />
+              <source
+                media="(min-width:768px)"
+                srcset="assets/images/image-tiramisu-tablet.jpg"
+              />
+              <source
+                media="(min-width:360px)"
+                srcset="assets/images/image-tiramisu-mobile.jpg"
+              />
+              <img
+                class="product-image tiramisu"
+                src="assets/images/image-tiramisu-mobile.jpg"
+                alt="A tiramusú topped with berries, mint and cocoa powder"
+              />
+            </picture>
+            <button class="add-button">
+              <img
+                class="icon-add-cart"
+                src="assets/images/icon-add-to-cart.svg"
+                alt=""
+              />Add to Cart
+            </button>
+            <div class="product-info">
+              <h6 class="tag-text">Tiramusu</h6>
+              <h2 class="title">Classic Tiramisu</h2>
+              <h2 class="title title-price">$5.50</h2>
+            </div>
+          </div>
+        </div>
+
+        <div class="product">
+          <div class="img-button-box">
+            <picture>
+              <source
+                media="(min-width:1024px)"
+                srcset="assets/images/image-baklava-desktop.jpg"
+              />
+              <source
+                media="(min-width:768px)"
+                srcset="assets/images/image-baklava-tablet.jpg"
+              />
+              <source
+                media="(min-width:360px)"
+                srcset="assets/images/image-baklava-mobile.jpg"
+              />
+              <img
+                class="product-image baklava"
+                src="assets/images/image-baklava-mobile.jpg"
+                alt="Three triangle shaped baklavas topped with crushed pistachos."
+              />
+            </picture>
+            <button class="add-button">
+              <img
+                class="icon-add-cart"
+                src="assets/images/icon-add-to-cart.svg"
+                alt=""
+              />Add to Cart
+            </button>
+            <div class="product-info">
+              <h6 class="tag-text">Baklava</h6>
+              <h2 class="title">Pistachio Baklava</h2>
+              <h2 class="title title-price">$4.00</h2>
+            </div>
+          </div>
+        </div>
+
+        <div class="product">
+          <div class="img-button-box">
+            <picture>
+              <source
+                media="(min-width:1024px)"
+                srcset="assets/images/image-meringue-desktop.jpg"
+              />
+              <source
+                media="(min-width:768px)"
+                srcset="assets/images/image-meringue-tablet.jpg"
+              />
+              <source
+                media="(min-width:360px)"
+                srcset="assets/images/image-meringue-mobile.jpg"
+              />
+              <img
+                class="product-image lemonpie"
+                src="assets/images/image-meringue-mobile.jpg"
+                alt="A slice of lemon pie coronated with meringue."
+              />
+            </picture>
+            <button class="add-button">
+              <img
+                class="icon-add-cart"
+                src="assets/images/icon-add-to-cart.svg"
+                alt=""
+              />Add to Cart
+            </button>
+            <div class="product-info">
+              <h6 class="tag-text">Pie</h6>
+              <h2 class="title">Lemon Meringue Pie</h2>
+              <h2 class="title title-price">$5.00</h2>
+            </div>
+          </div>
+        </div>
+
+        <div class="product">
+          <div class="img-button-box">
+            <picture>
+              <source
+                media="(min-width:1024px)"
+                srcset="assets/images/image-cake-desktop.jpg"
+              />
+              <source
+                media="(min-width:768px)"
+                srcset="assets/images/image-cake-tablet.jpg"
+              />
+              <source
+                media="(min-width:360px)"
+                srcset="assets/images/image-cake-mobile.jpg"
+              />
+              <img
+                class="product-image redvelvet"
+                src="assets/images/image-cake-mobile.jpg"
+                alt="Red velvet cake portion withb sliced strawberries on the inside and a berrie on top."
+              />
+            </picture>
+            <button class="add-button">
+              <img
+                class="icon-add-cart"
+                src="assets/images/icon-add-to-cart.svg"
+                alt=""
+              />Add to Cart
+            </button>
+            <div class="product-info">
+              <h6 class="tag-text">Cake</h6>
+              <h2 class="title">Red Velvet Cake</h2>
+              <h2 class="title title-price">$4.50</h2>
+            </div>
+          </div>
+        </div>
+
+        <div class="product">
+          <div class="img-button-box">
+            <picture>
+              <source
+                media="(min-width:1024px)"
+                srcset="assets/images/image-brownie-desktop.jpg"
+              />
+              <source
+                media="(min-width:768px)"
+                srcset="assets/images/image-brownie-tablet.jpg"
+              />
+              <source
+                media="(min-width:360px)"
+                srcset="assets/images/image-brownie-mobile.jpg"
+              />
+              <img
+                class="product-image brownie"
+                src="assets/images/image-brownie-mobile.jpg"
+                alt="A portion of brownie with a vanilla ice cream and caramel sirup"
+              />
+            </picture>
+            <button class="add-button">
+              <img
+                class="icon-add-cart"
+                src="assets/images/icon-add-to-cart.svg"
+                alt=""
+              />Add to Cart
+            </button>
+            <div class="product-info">
+              <h6 class="tag-text">Brownie</h6>
+              <h2 class="title">Salted Caramel Brownie</h2>
+              <h2 class="title title-price">$5.50</h2>
+            </div>
+          </div>
+        </div>
+
+        <div class="product">
+          <div class="img-button-box">
+            <picture>
+              <source
+                media="(min-width:1024px)"
+                srcset="assets/images/image-panna-cotta-desktop.jpg"
+              />
+              <source
+                media="(min-width:768px)"
+                srcset="assets/images/image-panna-cotta-tablet.jpg"
+              />
+              <source
+                media="(min-width:360px)"
+                srcset="assets/images/image-panna-cotta-mobile.jpg"
+              />
+              <img
+                class="product-image pannacotta"
+                src="assets/images/image-panna-cotta-mobile.jpg"
+                alt="Two "
+              />
+            </picture>
+            <button class="add-button">
+              <img
+                class="icon-add-cart"
+                src="assets/images/icon-add-to-cart.svg"
+                alt=""
+              />Add to Cart
+            </button>
+            <div class="product-info">
+              <h6 class="tag-text">Panna Cotta</h6>
+              <h2 class="title">Vanilla Panna Cotta</h2>
+              <h2 class="title title-price">$6.50</h2>
+            </div>
           </div>
         </div>
       </div>
-      <div class="cart"></div>
+      <div class="cart cart-empty">
+        <h2 class="cart-title">Your Cart (0)</h2>
+        <div class="cart-img-box">
+          <img
+            class="illustration-cart"
+            src="assets/images/illustration-empty-cart.svg"
+            alt="Empty cart"
+          />
+          <h3 class="emptycart">Your added items will appear here</h3>
+        </div>
+      </div>
+      <div class="cart cart-full">
+        <h2 class="cart-title">Your Cart (7)</h2>
+        <div class="cart-items-box">
+          <div class="item">
+            <div class="item-info">
+              <h3 class="title title-cart">Product Name</h3>
+              <div class="cuantity">
+                <span class="title cuantity-cart">1x</span>
+                <span class="tag-text">@ $5.50</span>
+                <span class="tag-text tag-text-bold"> $5.50</span>
+              </div>
+            </div>
+            <div class="icon-remove">
+              <img src="assets/images/icon-remove-item.svg" alt="Remove item" />
+            </div>
+          </div>
+        </div>
+        <div class="total">
+          <span class="h3 ordertotal">Order Total</span>
+          <span class="h1-2 totalprice">$46.50</span>
+        </div>
+        <div class="carbon">
+          <img src="assets/images/icon-carbon-neutral.svg" alt="" />
+          <span class="h3"
+            >This is a
+            <span class="h3 h3bold">carbon-neutral</span>delivery</span
+          >
+        </div>
+        <button class="order-button">Confirm Order</button>
+      </div>
     </main>
     <script src="js/scripts.js"></script>
   </body>
