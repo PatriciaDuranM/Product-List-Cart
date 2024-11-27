@@ -304,9 +304,6 @@ h2{
     padding-inline: 3px;
 }
 
-.hide{
-    display: none;
-}
 
 .icon-add-cart{
     width: 20px;
@@ -488,4 +485,8 @@ h2{
     font-weight: var(--semibold);
     border-radius: 999px;
     padding-block: 16px;
+}
+
+.hide{
+    display: none;
 }

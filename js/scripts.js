@@ -5,6 +5,7 @@ const quantityButtonElement = document.getElementById("quantity");
 
 const cartEmptyElement = document.getElementById("cart-empty");
 const cartFullElement = document.getElementById("cart-full");
+const totalpriceElement = document.getElementById("totalprice");
 
 /*filtro chips*/
 
@@ -26,9 +27,106 @@ filterElement.addEventListener("click", changeFilter);
 
 let cartContent = [];
 
+/*printcart*/
+
+/*<div class="cart-items-box">
+            <div class="item">
+              <div class="item-info">
+                <h3 class="title title-cart">Product Name</h3>
+                <div class="cuantity-box-cart">
+                  <span class="title cuantity-cart">1x</span>
+                  <span class="tag-text">@ $5.50</span>
+                  <span class="tag-text tag-text-bold"> $5.50</span>
+                </div>
+              </div>
+              <div class="icon-remove-box">
+                <img
+                  class="icon-remove"
+                  src="assets/images/icon-remove-item.svg"
+                  alt="Remove item"
+                />
+              </div>
+            </div>
+          </div>
+          */
+
+const printCart = () => {
+  const fragment = document.createDocumentFragment();
+  cartContent.forEach((product) => {
+    /*cart-item-box*/
+    const itemBox = document.createElement("div");
+    itemBox.classList.add("cart-items-box");
+
+    /*cart-item*/
+    const item = document.createElement("div");
+    item.classList.add("item");
+    item.append(itemBox);
+
+    /*item-info*/
+    const itemInfo = document.createElement("div");
+    itemInfo.classList.add("item-info");
+    itemInfo.append(item);
+
+    /*title-cart*/
+    const productName = document.createElement("h3");
+    productName.classList.add("title", "title-cart");
+    productName.append(itemInfo);
+
+    /*quantity-box*/
+    const quantityBoxCart = document.createElement("div");
+    quantityBoxCart.classList.add("cuantity-box-cart");
+    quantityBoxCart.append(itemInfo);
+
+    /*quantity*/
+    const quantity = document.createElement("span");
+    quantity.textContent = `${product.quantity}x`;
+    quantity.classList.add("title", "cuantity-cart");
+    quantity.append(quantityBoxCart);
+
+    /*price*/
+    const price = document.createElement("span");
+    price.textContent = `@ $${product.price}`;
+    price.classList.add("tag-text");
+    price.append(quantityBoxCart);
+
+    /*pricebold*/
+    const priceBold = document.createElement("span");
+    priceBold.textContent = `@ $${product.price}`;
+    priceBold.classList.add("tag-text", "tag-text-bold");
+    priceBold.append(quantityBoxCart);
+
+    /*iconremove*/
+    const iconRemoveBox = document.createElement("div");
+    iconRemoveBox.classList.add("icon-remove-box");
+    iconRemoveBox.append(item);
+
+    /*imagen*/
+    const iconRemove = document.createElement("img");
+    iconRemove.classList.add("icon-remove");
+    iconRemove.src = "assets/images/icon-remove-item.svg";
+    alt = "Remove item";
+    iconRemove.append(iconRemoveBox);
+
+    itemBox.append(fragment);
+  });
+
+  cartFullElement.append(fragment);
+};
+
+/*total suma*/
+
+const orderTotal = () => {
+  const total = cartContent.reduce((acc, product) => product.quantity + acc, 0);
+  console.log(total);
+  totalpriceElement.textContent = total;
+};
+
+orderTotal();
+
 const addToCart = (product, price) => {
   cartContent.push({ name: product, price: price, quantity: 1 });
   console.log(cartContent);
+  printCart();
 };
 
 /*cambio de boton*/
@@ -58,21 +156,17 @@ const hideButtonQuantity = (element) => {
 };
 /*Actualizar el número en la interfaz del producto correspondiente.*/
 
-const buttonNumber = (name, element) => {
-  const product = (quantityButtonElement.textContent = cartContent.quantity);
+const buttonNumber = (quantity, element) => {
+  element.textContent = quantity;
 };
 
 /*sumar uno a quantity*/
-const addOne = (name) => {
-  cartContent = cartContent.map((product) => {
-    if (product.name === name) {
-      product.quantity++;
-    }
-
-    return product;
-  });
+const addOne = (name, element) => {
+  const producSelected = cartContent.find((product) => (product.name = name));
+  producSelected.quantity++;
   console.log(cartContent);
-  buttonNumber();
+  buttonNumber(producSelected.quantity, element.previousElementSibling);
+  printCart();
 };
 
 /*reducir uno quantity*/
@@ -84,6 +178,8 @@ const removeOne = (name, element) => {
 
   if (product.quantity > 1) {
     product.quantity--;
+    printCart();
+    buttonNumber(product.quantity, element.nextElementSibling);
   } else if (product.quantity === 1) {
     /*eliminar el producto del array*/
     const filter = cartContent.filter((product) => product.name !== name);
@@ -94,7 +190,7 @@ const removeOne = (name, element) => {
   }
 
   console.log(cartContent);
-  buttonNumber();
+
   emptyCart();
 };
 
@@ -126,9 +222,9 @@ const productClick = (event) => {
 
   if (type === "increase") {
     /*detectar boton de sumar*/
-    const product = event.target.parentElement.dataset.name;
+    const productName = event.target.parentElement.dataset.name;
     /*llamar a la función que añade producto diciendo que vaya al producto correcto*/
-    addOne(product);
+    addOne(productName, event.target);
     console.log(event.target.parentElement);
 
     /*interfaz*/
