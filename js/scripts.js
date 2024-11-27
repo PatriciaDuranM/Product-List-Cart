@@ -50,6 +50,14 @@ let cartContent = [];
           </div>
           */
 
+/*total suma*/
+
+const orderTotal = () => {
+  const total = cartContent.reduce((acc, product) => product.quantity + acc, 0);
+  console.log(total);
+  totalpriceElement.textContent = total;
+};
+
 const printCart = () => {
   const fragment = document.createDocumentFragment();
   cartContent.forEach((product) => {
@@ -111,17 +119,8 @@ const printCart = () => {
   });
 
   cartFullElement.append(fragment);
+  orderTotal();
 };
-
-/*total suma*/
-
-const orderTotal = () => {
-  const total = cartContent.reduce((acc, product) => product.quantity + acc, 0);
-  console.log(total);
-  totalpriceElement.textContent = total;
-};
-
-orderTotal();
 
 const addToCart = (product, price) => {
   cartContent.push({ name: product, price: price, quantity: 1 });
