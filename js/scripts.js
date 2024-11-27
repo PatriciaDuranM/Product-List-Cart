@@ -53,72 +53,74 @@ let cartContent = [];
 /*total suma*/
 
 const orderTotal = () => {
-  const total = cartContent.reduce((acc, product) => product.quantity + acc, 0);
+  const total = cartContent.reduce(
+    (acc, product) => product.price * product.quantity + acc,
+    0
+  );
   console.log(total);
-  totalpriceElement.textContent = total;
+  totalpriceElement.textContent = `$${total.toFixed(2)}`;
 };
 
 const printCart = () => {
   const fragment = document.createDocumentFragment();
+
   cartContent.forEach((product) => {
     /*cart-item-box*/
     const itemBox = document.createElement("div");
     itemBox.classList.add("cart-items-box");
 
     /*cart-item*/
+
     const item = document.createElement("div");
     item.classList.add("item");
-    item.append(itemBox);
 
     /*item-info*/
+
     const itemInfo = document.createElement("div");
     itemInfo.classList.add("item-info");
-    itemInfo.append(item);
 
     /*title-cart*/
+
     const productName = document.createElement("h3");
     productName.classList.add("title", "title-cart");
-    productName.append(itemInfo);
-
+    productName.textContent = product.name;
     /*quantity-box*/
     const quantityBoxCart = document.createElement("div");
     quantityBoxCart.classList.add("cuantity-box-cart");
-    quantityBoxCart.append(itemInfo);
-
     /*quantity*/
+
     const quantity = document.createElement("span");
     quantity.textContent = `${product.quantity}x`;
     quantity.classList.add("title", "cuantity-cart");
-    quantity.append(quantityBoxCart);
-
     /*price*/
+
     const price = document.createElement("span");
     price.textContent = `@ $${product.price}`;
     price.classList.add("tag-text");
-    price.append(quantityBoxCart);
-
     /*pricebold*/
+
     const priceBold = document.createElement("span");
     priceBold.textContent = `@ $${product.price}`;
     priceBold.classList.add("tag-text", "tag-text-bold");
-    priceBold.append(quantityBoxCart);
-
+    quantityBoxCart.append(quantity, price, priceBold);
+    itemInfo.append(productName, quantityBoxCart);
     /*iconremove*/
     const iconRemoveBox = document.createElement("div");
     iconRemoveBox.classList.add("icon-remove-box");
-    iconRemoveBox.append(item);
 
     /*imagen*/
     const iconRemove = document.createElement("img");
     iconRemove.classList.add("icon-remove");
-    iconRemove.src = "assets/images/icon-remove-item.svg";
-    alt = "Remove item";
-    iconRemove.append(iconRemoveBox);
-
-    itemBox.append(fragment);
+    iconRemove.src = "./assets/images/icon-remove-item.svg";
+    iconRemove.alt = "Remove item";
+    iconRemoveBox.append(iconRemove);
+    item.append(itemInfo, iconRemoveBox);
+    itemBox.append(item);
+    fragment.append(itemBox);
   });
 
-  cartFullElement.append(fragment);
+  cartFullElement.textContent = "";
+  cartFullElement.prepend(fragment);
   orderTotal();
 };
 
@@ -177,7 +179,7 @@ const removeOne = (name, element) => {
 
   if (product.quantity > 1) {
     product.quantity--;
-    printCart();
+
     buttonNumber(product.quantity, element.nextElementSibling);
   } else if (product.quantity === 1) {
     /*eliminar el producto del array*/
@@ -189,7 +191,7 @@ const removeOne = (name, element) => {
   }
 
   console.log(cartContent);
-
+  printCart();
   emptyCart();
 };
 
