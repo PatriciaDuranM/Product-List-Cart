@@ -5,6 +5,7 @@ const quantityButtonElement = document.getElementById("quantity");
 
 const cartEmptyElement = document.getElementById("cart-empty");
 const cartFullElement = document.getElementById("cart-full");
+const showcartElement = document.getElementById("showcart");
 const totalpriceElement = document.getElementById("totalprice");
 
 /*filtro chips*/
@@ -70,17 +71,14 @@ const printCart = () => {
     itemBox.classList.add("cart-items-box");
 
     /*cart-item*/
-
     const item = document.createElement("div");
     item.classList.add("item");
 
     /*item-info*/
-
     const itemInfo = document.createElement("div");
     itemInfo.classList.add("item-info");
 
     /*title-cart*/
-
     const productName = document.createElement("h3");
     productName.classList.add("title", "title-cart");
     productName.textContent = product.name;
@@ -124,6 +122,15 @@ const printCart = () => {
   orderTotal();
 };
 
+/*
+const removeItem = () => {
+  const filter = cartContent.filter((product) => product.name !== name);
+  cartContent = filter;
+  item.classList.add("hide");
+};
+
+iconRemoveBox.addEventListener("click", removeItem);*/
+
 const addToCart = (product, price) => {
   cartContent.push({ name: product, price: price, quantity: 1 });
   console.log(cartContent);
@@ -131,7 +138,6 @@ const addToCart = (product, price) => {
 };
 
 /*cambio de boton*/
-
 const showButtonQuantity = (element, product, price) => {
   /*muestre el botón de quantity*/
   const showQuantity = element.nextElementSibling;
@@ -196,13 +202,12 @@ const removeOne = (name, element) => {
 };
 
 /*Enseñar la carta vacia o llena*/
-
 const emptyCart = (event) => {
   if (cartContent.length === 0) {
-    cartFullElement.classList.add("hide");
+    showcartElement.classList.add("hide");
     cartEmptyElement.classList.remove("hide");
   } else {
-    cartFullElement.classList.remove("hide");
+    showcartElement.classList.remove("hide");
     cartEmptyElement.classList.add("hide");
   }
 };
