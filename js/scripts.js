@@ -106,6 +106,10 @@ const printCart = () => {
     const iconRemoveBox = document.createElement("div");
     iconRemoveBox.classList.add("icon-remove-box");
 
+    iconRemoveBox.addEventListener("click", () => {
+      removeItem(product.name);
+    });
+
     /*imagen*/
     const iconRemove = document.createElement("img");
     iconRemove.classList.add("icon-remove");
@@ -122,14 +126,24 @@ const printCart = () => {
   orderTotal();
 };
 
-/*
-const removeItem = () => {
-  const filter = cartContent.filter((product) => product.name !== name);
-  cartContent = filter;
-  item.classList.add("hide");
+const removeItem = (name, element) => {
+  const filteredProducts = cartContent.filter(
+    (product) => product.name !== name
+  );
+  cartContent = filteredProducts;
+  printCart();
+  if (element) {
+    /*poner el botón de nuevo*/
+    hideButtonQuantity(element);
+  } else {
+    /*selector de css*/
+    const productButtons = document.querySelectorAll(`[data-name= "${name}"]`);
+    productButtons[1].classList.add("hide");
+    productButtons[1].parentElement.children[0].children[3].classList.remove(
+      "selected"
+    );
+  }
 };
-
-iconRemoveBox.addEventListener("click", removeItem);*/
 
 const addToCart = (product, price) => {
   cartContent.push({ name: product, price: price, quantity: 1 });
@@ -189,11 +203,7 @@ const removeOne = (name, element) => {
     buttonNumber(product.quantity, element.nextElementSibling);
   } else if (product.quantity === 1) {
     /*eliminar el producto del array*/
-    const filter = cartContent.filter((product) => product.name !== name);
-    cartContent = filter;
-
-    /*poner el botón de nuevo*/
-    hideButtonQuantity(element);
+    removeItem(name, element);
   }
 
   console.log(cartContent);
