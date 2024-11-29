@@ -115,6 +115,7 @@ const printCart = () => {
     iconRemove.classList.add("icon-remove");
     iconRemove.src = "./assets/images/icon-remove-item.svg";
     iconRemove.alt = "Remove item";
+
     iconRemoveBox.append(iconRemove);
     item.append(itemInfo, iconRemoveBox);
     itemBox.append(item);
@@ -142,6 +143,9 @@ const removeItem = (name, element) => {
     productButtons[1].parentElement.children[0].children[3].classList.remove(
       "selected"
     );
+    /*para poner esto más corto, ponemos el data-name a la imagen del producto correspondiente, asi los data name salen todos y podemos elegir directametne la imagen de manera mas corta sin ver los parents
+    
+    quedando simplemente product buttons [2] en el primero y productButtons [0] en el segundo*/
   }
 };
 
